@@ -19,6 +19,9 @@
             <column name="step" type="integer">
                 <constraints nullable="false" />
             </column>
+            <column name="conge_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_validation_step_conge_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

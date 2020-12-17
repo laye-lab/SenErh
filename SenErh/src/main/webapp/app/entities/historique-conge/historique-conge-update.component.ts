@@ -4,12 +4,9 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IHistoriqueConge, HistoriqueConge } from 'app/shared/model/historique-conge.model';
 import { HistoriqueCongeService } from './historique-conge.service';
-import { IAgents } from 'app/shared/model/agents.model';
-import { AgentsService } from 'app/entities/agents/agents.service';
 
 @Component({
   selector: 'jhi-historique-conge-update',
@@ -17,7 +14,6 @@ import { AgentsService } from 'app/entities/agents/agents.service';
 })
 export class HistoriqueCongeUpdateComponent implements OnInit {
   isSaving = false;
-  agents: IAgents[] = [];
   dateDernierDepartDp: any;
   dateDernierRetourDp: any;
 
@@ -25,12 +21,10 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
     id: [],
     dateDernierDepart: [null, [Validators.required]],
     dateDernierRetour: [null, [Validators.required]],
-    agents: [],
   });
 
   constructor(
     protected historiqueCongeService: HistoriqueCongeService,
-    protected agentsService: AgentsService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -38,28 +32,6 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ historiqueConge }) => {
       this.updateForm(historiqueConge);
-
-      this.agentsService
-        .query({ filter: 'historiqueconge-is-null' })
-        .pipe(
-          map((res: HttpResponse<IAgents[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IAgents[]) => {
-          if (!historiqueConge.agents || !historiqueConge.agents.id) {
-            this.agents = resBody;
-          } else {
-            this.agentsService
-              .find(historiqueConge.agents.id)
-              .pipe(
-                map((subRes: HttpResponse<IAgents>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IAgents[]) => (this.agents = concatRes));
-          }
-        });
     });
   }
 
@@ -68,7 +40,6 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
       id: historiqueConge.id,
       dateDernierDepart: historiqueConge.dateDernierDepart,
       dateDernierRetour: historiqueConge.dateDernierRetour,
-      agents: historiqueConge.agents,
     });
   }
 
@@ -92,7 +63,6 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       dateDernierDepart: this.editForm.get(['dateDernierDepart'])!.value,
       dateDernierRetour: this.editForm.get(['dateDernierRetour'])!.value,
-      agents: this.editForm.get(['agents'])!.value,
     };
   }
 
@@ -110,9 +80,5 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IAgents): any {
-    return item.id;
   }
 }

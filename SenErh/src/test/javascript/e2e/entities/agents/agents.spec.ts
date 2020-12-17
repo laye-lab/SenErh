@@ -49,6 +49,7 @@ describe('Agents e2e test', () => {
       agentsUpdatePage.statutSelectLastOption(),
       agentsUpdatePage.setAffectationInput('affectation'),
       agentsUpdatePage.setTauxInput('5'),
+      agentsUpdatePage.historiqueCongeSelectLastOption(),
     ]);
 
     expect(await agentsUpdatePage.getNomInput()).to.eq('nom', 'Expected Nom value to be equals to nom');

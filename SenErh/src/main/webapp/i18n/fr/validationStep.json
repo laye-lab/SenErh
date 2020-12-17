@@ -16,7 +16,8 @@
       "detail": {
         "title": "Validation Step"
       },
-      "step": "Step"
+      "step": "Step",
+      "conge": "Conge"
     }
   }
 }

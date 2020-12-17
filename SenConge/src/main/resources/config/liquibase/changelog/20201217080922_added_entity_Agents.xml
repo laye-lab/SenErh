@@ -40,6 +40,9 @@
             <column name="taux" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="historique_conge_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_agents_historique_conge_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

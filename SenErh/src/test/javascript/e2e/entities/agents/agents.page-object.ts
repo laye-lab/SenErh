@@ -38,6 +38,8 @@ export class AgentsUpdatePage {
   affectationInput = element(by.id('field_affectation'));
   tauxInput = element(by.id('field_taux'));
 
+  historiqueCongeSelect = element(by.id('field_historiqueConge'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
@@ -108,6 +110,22 @@ export class AgentsUpdatePage {
 
   async getTauxInput(): Promise<string> {
     return await this.tauxInput.getAttribute('value');
+  }
+
+  async historiqueCongeSelectLastOption(): Promise<void> {
+    await this.historiqueCongeSelect.all(by.tagName('option')).last().click();
+  }
+
+  async historiqueCongeSelectOption(option: string): Promise<void> {
+    await this.historiqueCongeSelect.sendKeys(option);
+  }
+
+  getHistoriqueCongeSelect(): ElementFinder {
+    return this.historiqueCongeSelect;
+  }
+
+  async getHistoriqueCongeSelectedOption(): Promise<string> {
+    return await this.historiqueCongeSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

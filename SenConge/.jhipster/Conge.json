@@ -18,8 +18,7 @@
       "otherEntityName": "validationStep",
       "otherEntityRelationshipName": "conge",
       "relationshipName": "validationStep",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "ownerSide": false
     },
     {
       "relationshipType": "many-to-one",

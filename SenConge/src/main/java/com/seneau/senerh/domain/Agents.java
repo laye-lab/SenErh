@@ -58,6 +58,10 @@ public class Agents implements Serializable {
     @Column(name = "taux")
     private Integer taux;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private HistoriqueConge historiqueConge;
+
     @OneToMany(mappedBy = "agents")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Conge> conges = new HashSet<>();
@@ -173,6 +177,19 @@ public class Agents implements Serializable {
 
     public void setTaux(Integer taux) {
         this.taux = taux;
+    }
+
+    public HistoriqueConge getHistoriqueConge() {
+        return historiqueConge;
+    }
+
+    public Agents historiqueConge(HistoriqueConge historiqueConge) {
+        this.historiqueConge = historiqueConge;
+        return this;
+    }
+
+    public void setHistoriqueConge(HistoriqueConge historiqueConge) {
+        this.historiqueConge = historiqueConge;
     }
 
     public Set<Conge> getConges() {

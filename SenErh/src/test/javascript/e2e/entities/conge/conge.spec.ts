@@ -43,7 +43,6 @@ describe('Conge e2e test', () => {
     await promise.all([
       congeUpdatePage.setIdCongeInput('5'),
       congeUpdatePage.setDateDebutInput('2000-12-31'),
-      congeUpdatePage.validationStepSelectLastOption(),
       congeUpdatePage.agentsSelectLastOption(),
     ]);
 

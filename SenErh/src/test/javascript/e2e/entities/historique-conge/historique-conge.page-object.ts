@@ -32,8 +32,6 @@ export class HistoriqueCongeUpdatePage {
   dateDernierDepartInput = element(by.id('field_dateDernierDepart'));
   dateDernierRetourInput = element(by.id('field_dateDernierRetour'));
 
-  agentsSelect = element(by.id('field_agents'));
-
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
@@ -52,22 +50,6 @@ export class HistoriqueCongeUpdatePage {
 
   async getDateDernierRetourInput(): Promise<string> {
     return await this.dateDernierRetourInput.getAttribute('value');
-  }
-
-  async agentsSelectLastOption(): Promise<void> {
-    await this.agentsSelect.all(by.tagName('option')).last().click();
-  }
-
-  async agentsSelectOption(option: string): Promise<void> {
-    await this.agentsSelect.sendKeys(option);
-  }
-
-  getAgentsSelect(): ElementFinder {
-    return this.agentsSelect;
-  }
-
-  async getAgentsSelectedOption(): Promise<string> {
-    return await this.agentsSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {
