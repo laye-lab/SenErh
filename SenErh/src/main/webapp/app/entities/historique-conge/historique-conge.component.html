@@ -25,7 +25,7 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.historiqueConge.dateDernierDepart">Date Dernier Depart</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.historiqueConge.dateDernierRetour">Date Dernier Retour</span></th>
-                    <th scope="col" ><span jhiTranslate="senErhApp.historiqueConge.agents">Agents</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.historiqueConge.idAgent">Id Agent</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -35,8 +35,8 @@
                     <td>{{ historiqueConge.dateDernierDepart | date:'mediumDate' }}</td>
                     <td>{{ historiqueConge.dateDernierRetour | date:'mediumDate' }}</td>
                     <td>
-                        <div *ngIf="historiqueConge.agents">
-                            <a [routerLink]="['/agents', historiqueConge.agents?.id, 'view']" >{{ historiqueConge.agents?.id }}</a>
+                        <div *ngIf="historiqueConge.idAgent">
+                            <a [routerLink]="['/agents', historiqueConge.idAgent?.id, 'view']" >{{ historiqueConge.idAgent?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

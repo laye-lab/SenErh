@@ -22,8 +22,8 @@
             <column name="date_dernier_retour" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="agents_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_historique_conge_agents_id" />
+            <column name="id_agent_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_historique_conge_id_agent_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

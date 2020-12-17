@@ -7,16 +7,7 @@
       "fieldValidateRules": ["required"]
     }
   ],
-  "relationships": [
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "conge",
-      "otherEntityRelationshipName": "validationStep",
-      "relationshipName": "conge",
-      "otherEntityField": "id",
-      "ownerSide": true
-    }
-  ],
+  "relationships": [],
   "changelogDate": "20201217081122",
   "entityTableName": "validation_step",
   "dto": "no",

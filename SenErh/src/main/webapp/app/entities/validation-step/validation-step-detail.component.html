@@ -12,12 +12,6 @@
                 <dd>
                     <span>{{ validationStep.step }}</span>
                 </dd>
-                <dt><span jhiTranslate="senErhApp.validationStep.conge">Conge</span></dt>
-                <dd>
-                    <div *ngIf="validationStep.conge">
-                        <a [routerLink]="['/conge', validationStep.conge?.id, 'view']">{{ validationStep.conge?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

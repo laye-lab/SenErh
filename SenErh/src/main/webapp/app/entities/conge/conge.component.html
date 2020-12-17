@@ -25,6 +25,8 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.conge.idConge">Id Conge</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.conge.dateDebut">Date Debut</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.conge.validationStep">Validation Step</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.conge.idAgent">Id Agent</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -33,6 +35,16 @@
                     <td><a [routerLink]="['/conge', conge.id, 'view']">{{ conge.id }}</a></td>
                     <td>{{ conge.idConge }}</td>
                     <td>{{ conge.dateDebut | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="conge.validationStep">
+                            <a [routerLink]="['/validation-step', conge.validationStep?.id, 'view']" >{{ conge.validationStep?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="conge.idAgent">
+                            <a [routerLink]="['/agents', conge.idAgent?.id, 'view']" >{{ conge.idAgent?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

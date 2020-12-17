@@ -41,7 +41,6 @@ describe('Agents e2e test', () => {
     await agentsComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      agentsUpdatePage.setMatriceInput('matrice'),
       agentsUpdatePage.setNomInput('nom'),
       agentsUpdatePage.setEquipeInput('5'),
       agentsUpdatePage.setDirectionInput('direction'),
@@ -50,10 +49,8 @@ describe('Agents e2e test', () => {
       agentsUpdatePage.statutSelectLastOption(),
       agentsUpdatePage.setAffectationInput('affectation'),
       agentsUpdatePage.setTauxInput('5'),
-      agentsUpdatePage.congeSelectLastOption(),
     ]);
 
-    expect(await agentsUpdatePage.getMatriceInput()).to.eq('matrice', 'Expected Matrice value to be equals to matrice');
     expect(await agentsUpdatePage.getNomInput()).to.eq('nom', 'Expected Nom value to be equals to nom');
     expect(await agentsUpdatePage.getEquipeInput()).to.eq('5', 'Expected equipe value to be equals to 5');
     expect(await agentsUpdatePage.getDirectionInput()).to.eq('direction', 'Expected Direction value to be equals to direction');

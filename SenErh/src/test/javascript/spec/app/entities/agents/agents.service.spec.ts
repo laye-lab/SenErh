@@ -21,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(AgentsService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Agents(0, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Statut.AMA, 'AAAAAAA', 0);
+      elemDefault = new Agents(0, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', Statut.AMA, 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
@@ -55,7 +55,6 @@ describe('Service Tests', () => {
       it('should update a Agents', () => {
         const returnedFromService = Object.assign(
           {
-            matrice: 'BBBBBB',
             nom: 'BBBBBB',
             equipe: 1,
             direction: 'BBBBBB',
@@ -80,7 +79,6 @@ describe('Service Tests', () => {
       it('should return a list of Agents', () => {
         const returnedFromService = Object.assign(
           {
-            matrice: 'BBBBBB',
             nom: 'BBBBBB',
             equipe: 1,
             direction: 'BBBBBB',

@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="senErhApp.agents.matrice">Matrice</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.nom">Nom</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.equipe">Equipe</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.direction">Direction</span></th>
@@ -32,14 +31,12 @@
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.statut">Statut</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.affectation">Affectation</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.taux">Taux</span></th>
-                    <th scope="col" ><span jhiTranslate="senErhApp.agents.conge">Conge</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let agents of agents ;trackBy: trackId">
                     <td><a [routerLink]="['/agents', agents.id, 'view']">{{ agents.id }}</a></td>
-                    <td>{{ agents.matrice }}</td>
                     <td>{{ agents.nom }}</td>
                     <td>{{ agents.equipe }}</td>
                     <td>{{ agents.direction }}</td>
@@ -48,11 +45,6 @@
                     <td jhiTranslate="{{ 'senErhApp.Statut.' + agents.statut }}">{{ agents.statut }}</td>
                     <td>{{ agents.affectation }}</td>
                     <td>{{ agents.taux }}</td>
-                    <td>
-                        <div *ngIf="agents.conge">
-                            <a [routerLink]="['/conge', agents.conge?.id, 'view']" >{{ agents.conge?.id }}</a>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

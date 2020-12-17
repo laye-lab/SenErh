@@ -44,10 +44,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="senErhApp.historiqueConge.agents" for="field_agents">Agents</label>
-                    <select class="form-control" id="field_agents" name="agents" formControlName="agents">
+                    <label class="form-control-label" jhiTranslate="senErhApp.historiqueConge.idAgent" for="field_idAgent">Id Agent</label>
+                    <select class="form-control" id="field_idAgent" name="idAgent" formControlName="idAgent">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="agentsOption.id === editForm.get('agents')!.value?.id ? editForm.get('agents')!.value : agentsOption" *ngFor="let agentsOption of agents; trackBy: trackById">{{ agentsOption.id }}</option>
+                        <option [ngValue]="agentsOption.id === editForm.get('idAgent')!.value?.id ? editForm.get('idAgent')!.value : agentsOption" *ngFor="let agentsOption of idagents; trackBy: trackById">{{ agentsOption.id }}</option>
                     </select>
                 </div>
             </div>

@@ -18,8 +18,8 @@
       },
       "idConge": "Id Conge",
       "dateDebut": "Date Debut",
-      "agents": "Agents",
-      "validationStep": "Validation Step"
+      "validationStep": "Validation Step",
+      "idAgent": "Id Agent"
     }
   }
 }

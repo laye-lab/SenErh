@@ -40,7 +40,12 @@ describe('Conge e2e test', () => {
 
     await congeComponentsPage.clickOnCreateButton();
 
-    await promise.all([congeUpdatePage.setIdCongeInput('5'), congeUpdatePage.setDateDebutInput('2000-12-31')]);
+    await promise.all([
+      congeUpdatePage.setIdCongeInput('5'),
+      congeUpdatePage.setDateDebutInput('2000-12-31'),
+      congeUpdatePage.validationStepSelectLastOption(),
+      congeUpdatePage.idAgentSelectLastOption(),
+    ]);
 
     expect(await congeUpdatePage.getIdCongeInput()).to.eq('5', 'Expected idConge value to be equals to 5');
     expect(await congeUpdatePage.getDateDebutInput()).to.eq('2000-12-31', 'Expected dateDebut value to be equals to 2000-12-31');

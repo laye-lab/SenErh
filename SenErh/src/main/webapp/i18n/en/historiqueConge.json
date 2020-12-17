@@ -18,7 +18,7 @@
       },
       "dateDernierDepart": "Date Dernier Depart",
       "dateDernierRetour": "Date Dernier Retour",
-      "agents": "Agents"
+      "idAgent": "Id Agent"
     }
   }
 }

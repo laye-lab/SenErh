@@ -1,7 +1,5 @@
 package com.seneau.senerh.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.seneau.senerh.domain.enumeration.Statut;
 
@@ -25,10 +25,6 @@ public class Agents implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotNull
-    @Column(name = "matrice", nullable = false)
-    private String matrice;
 
     @NotNull
     @Column(name = "nom", nullable = false)
@@ -62,13 +58,9 @@ public class Agents implements Serializable {
     @Column(name = "taux")
     private Integer taux;
 
-    @OneToOne(mappedBy = "agents")
-    @JsonIgnore
-    private HistoriqueConge historiqueConge;
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "agents", allowSetters = true)
-    private Conge conge;
+    @OneToMany(mappedBy = "idAgent")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Conge> idConges = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -77,19 +69,6 @@ public class Agents implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getMatrice() {
-        return matrice;
-    }
-
-    public Agents matrice(String matrice) {
-        this.matrice = matrice;
-        return this;
-    }
-
-    public void setMatrice(String matrice) {
-        this.matrice = matrice;
     }
 
     public String getNom() {
@@ -196,30 +175,29 @@ public class Agents implements Serializable {
         this.taux = taux;
     }
 
-    public HistoriqueConge getHistoriqueConge() {
-        return historiqueConge;
+    public Set<Conge> getIdConges() {
+        return idConges;
     }
 
-    public Agents historiqueConge(HistoriqueConge historiqueConge) {
-        this.historiqueConge = historiqueConge;
+    public Agents idConges(Set<Conge> conges) {
+        this.idConges = conges;
         return this;
     }
 
-    public void setHistoriqueConge(HistoriqueConge historiqueConge) {
-        this.historiqueConge = historiqueConge;
-    }
-
-    public Conge getConge() {
-        return conge;
-    }
-
-    public Agents conge(Conge conge) {
-        this.conge = conge;
+    public Agents addIdConge(Conge conge) {
+        this.idConges.add(conge);
+        conge.setIdAgent(this);
         return this;
     }
 
-    public void setConge(Conge conge) {
-        this.conge = conge;
+    public Agents removeIdConge(Conge conge) {
+        this.idConges.remove(conge);
+        conge.setIdAgent(null);
+        return this;
+    }
+
+    public void setIdConges(Set<Conge> conges) {
+        this.idConges = conges;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -244,7 +222,6 @@ public class Agents implements Serializable {
     public String toString() {
         return "Agents{" +
             "id=" + getId() +
-            ", matrice='" + getMatrice() + "'" +
             ", nom='" + getNom() + "'" +
             ", equipe=" + getEquipe() +
             ", direction='" + getDirection() + "'" +

@@ -17,7 +17,7 @@
       "relationshipType": "one-to-one",
       "otherEntityName": "agents",
       "otherEntityRelationshipName": "historiqueConge",
-      "relationshipName": "agents",
+      "relationshipName": "idAgent",
       "otherEntityField": "id",
       "ownerSide": true
     }

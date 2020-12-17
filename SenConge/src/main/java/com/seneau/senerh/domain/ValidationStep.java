@@ -26,10 +26,6 @@ public class ValidationStep implements Serializable {
     @Column(name = "step", nullable = false)
     private Integer step;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Conge conge;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -50,19 +46,6 @@ public class ValidationStep implements Serializable {
 
     public void setStep(Integer step) {
         this.step = step;
-    }
-
-    public Conge getConge() {
-        return conge;
-    }
-
-    public ValidationStep conge(Conge conge) {
-        this.conge = conge;
-        return this;
-    }
-
-    public void setConge(Conge conge) {
-        this.conge = conge;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
