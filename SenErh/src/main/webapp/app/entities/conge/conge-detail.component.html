@@ -22,10 +22,10 @@
                         <a [routerLink]="['/validation-step', conge.validationStep?.id, 'view']">{{ conge.validationStep?.id }}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="senErhApp.conge.idAgent">Id Agent</span></dt>
+                <dt><span jhiTranslate="senErhApp.conge.agents">Agents</span></dt>
                 <dd>
-                    <div *ngIf="conge.idAgent">
-                        <a [routerLink]="['/agents', conge.idAgent?.id, 'view']">{{ conge.idAgent?.id }}</a>
+                    <div *ngIf="conge.agents">
+                        <a [routerLink]="['/agents', conge.agents?.id, 'view']">{{ conge.agents?.id }}</a>
                     </div>
                 </dd>
             </dl>

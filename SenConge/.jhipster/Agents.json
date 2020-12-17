@@ -46,8 +46,8 @@
     {
       "relationshipType": "one-to-many",
       "otherEntityName": "conge",
-      "otherEntityRelationshipName": "idAgent",
-      "relationshipName": "idConge"
+      "otherEntityRelationshipName": "agents",
+      "relationshipName": "conge"
     }
   ],
   "changelogDate": "20201217080922",

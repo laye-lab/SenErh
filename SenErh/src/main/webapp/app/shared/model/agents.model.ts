@@ -11,7 +11,7 @@ export interface IAgents {
   statut?: Statut;
   affectation?: string;
   taux?: number;
-  idConges?: IConge[];
+  conges?: IConge[];
 }
 
 export class Agents implements IAgents {
@@ -25,6 +25,6 @@ export class Agents implements IAgents {
     public statut?: Statut,
     public affectation?: string,
     public taux?: number,
-    public idConges?: IConge[]
+    public conges?: IConge[]
   ) {}
 }

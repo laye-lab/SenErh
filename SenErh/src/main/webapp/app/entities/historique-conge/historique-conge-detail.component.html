@@ -16,10 +16,10 @@
                 <dd>
                     <span>{{ historiqueConge.dateDernierRetour }}</span>
                 </dd>
-                <dt><span jhiTranslate="senErhApp.historiqueConge.idAgent">Id Agent</span></dt>
+                <dt><span jhiTranslate="senErhApp.historiqueConge.agents">Agents</span></dt>
                 <dd>
-                    <div *ngIf="historiqueConge.idAgent">
-                        <a [routerLink]="['/agents', historiqueConge.idAgent?.id, 'view']">{{ historiqueConge.idAgent?.id }}</a>
+                    <div *ngIf="historiqueConge.agents">
+                        <a [routerLink]="['/agents', historiqueConge.agents?.id, 'view']">{{ historiqueConge.agents?.id }}</a>
                     </div>
                 </dd>
             </dl>

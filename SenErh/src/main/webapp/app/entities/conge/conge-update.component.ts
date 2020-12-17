@@ -30,7 +30,7 @@ export class CongeUpdateComponent implements OnInit {
     idConge: [null, [Validators.required]],
     dateDebut: [null, [Validators.required]],
     validationStep: [],
-    idAgent: [],
+    agents: [],
   });
 
   constructor(
@@ -77,7 +77,7 @@ export class CongeUpdateComponent implements OnInit {
       idConge: conge.idConge,
       dateDebut: conge.dateDebut,
       validationStep: conge.validationStep,
-      idAgent: conge.idAgent,
+      agents: conge.agents,
     });
   }
 
@@ -102,7 +102,7 @@ export class CongeUpdateComponent implements OnInit {
       idConge: this.editForm.get(['idConge'])!.value,
       dateDebut: this.editForm.get(['dateDebut'])!.value,
       validationStep: this.editForm.get(['validationStep'])!.value,
-      idAgent: this.editForm.get(['idAgent'])!.value,
+      agents: this.editForm.get(['agents'])!.value,
     };
   }
 
