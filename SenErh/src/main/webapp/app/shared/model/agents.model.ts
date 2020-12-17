@@ -14,7 +14,7 @@ export interface IAgents {
   affectation?: string;
   taux?: number;
   historiqueConge?: IHistoriqueConge;
-  conges?: IConge[];
+  conge?: IConge;
 }
 
 export class Agents implements IAgents {
@@ -30,6 +30,6 @@ export class Agents implements IAgents {
     public affectation?: string,
     public taux?: number,
     public historiqueConge?: IHistoriqueConge,
-    public conges?: IConge[]
+    public conge?: IConge
   ) {}
 }

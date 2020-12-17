@@ -4,15 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
     <!--
-        Added the constraints for entity Agents.
+        Added the constraints for entity HistoriqueConge.
     -->
-    <changeSet id="20201217080922-2" author="jhipster">
+    <changeSet id="20201217081222-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="conge_id"
-                                 baseTableName="agents"
-                                 constraintName="fk_agents_conge_id"
+        <addForeignKeyConstraint baseColumnNames="agents_id"
+                                 baseTableName="historique_conge"
+                                 constraintName="fk_historique_conge_agents_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="conge"/>
+                                 referencedTableName="agents"/>
 
     </changeSet>
 </databaseChangeLog>

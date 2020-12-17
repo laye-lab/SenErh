@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.validationStep.step">Step</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.validationStep.conge">Conge</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <tr *ngFor="let validationStep of validationSteps ;trackBy: trackId">
                     <td><a [routerLink]="['/validation-step', validationStep.id, 'view']">{{ validationStep.id }}</a></td>
                     <td>{{ validationStep.step }}</td>
+                    <td>
+                        <div *ngIf="validationStep.conge">
+                            <a [routerLink]="['/conge', validationStep.conge?.id, 'view']" >{{ validationStep.conge?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
