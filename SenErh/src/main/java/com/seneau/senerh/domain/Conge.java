@@ -1,6 +1,6 @@
 package com.seneau.senerh.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,6 +9,8 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Conge.
@@ -32,13 +34,13 @@ public class Conge implements Serializable {
     @Column(name = "date_debut", nullable = false)
     private LocalDate dateDebut;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private ValidationStep validationStep;
+    @OneToMany(mappedBy = "conge")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Agents> agents = new HashSet<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "conges", allowSetters = true)
-    private Agents agents;
+    @OneToOne(mappedBy = "conge")
+    @JsonIgnore
+    private ValidationStep validationStep;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -75,6 +77,31 @@ public class Conge implements Serializable {
         this.dateDebut = dateDebut;
     }
 
+    public Set<Agents> getAgents() {
+        return agents;
+    }
+
+    public Conge agents(Set<Agents> agents) {
+        this.agents = agents;
+        return this;
+    }
+
+    public Conge addAgents(Agents agents) {
+        this.agents.add(agents);
+        agents.setConge(this);
+        return this;
+    }
+
+    public Conge removeAgents(Agents agents) {
+        this.agents.remove(agents);
+        agents.setConge(null);
+        return this;
+    }
+
+    public void setAgents(Set<Agents> agents) {
+        this.agents = agents;
+    }
+
     public ValidationStep getValidationStep() {
         return validationStep;
     }
@@ -86,19 +113,6 @@ public class Conge implements Serializable {
 
     public void setValidationStep(ValidationStep validationStep) {
         this.validationStep = validationStep;
-    }
-
-    public Agents getAgents() {
-        return agents;
-    }
-
-    public Conge agents(Agents agents) {
-        this.agents = agents;
-        return this;
-    }
-
-    public void setAgents(Agents agents) {
-        this.agents = agents;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

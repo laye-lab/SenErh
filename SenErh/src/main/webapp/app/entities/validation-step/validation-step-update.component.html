@@ -26,6 +26,14 @@
                         </small>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.validationStep.conge" for="field_conge">Conge</label>
+                    <select class="form-control" id="field_conge" name="conge" formControlName="conge">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="congeOption.id === editForm.get('conge')!.value?.id ? editForm.get('conge')!.value : congeOption" *ngFor="let congeOption of conges; trackBy: trackById">{{ congeOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

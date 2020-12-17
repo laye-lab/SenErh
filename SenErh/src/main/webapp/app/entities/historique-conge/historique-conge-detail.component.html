@@ -16,6 +16,12 @@
                 <dd>
                     <span>{{ historiqueConge.dateDernierRetour }}</span>
                 </dd>
+                <dt><span jhiTranslate="senErhApp.historiqueConge.agents">Agents</span></dt>
+                <dd>
+                    <div *ngIf="historiqueConge.agents">
+                        <a [routerLink]="['/agents', historiqueConge.agents?.id, 'view']">{{ historiqueConge.agents?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
