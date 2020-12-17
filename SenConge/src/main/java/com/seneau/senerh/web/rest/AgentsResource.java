@@ -18,8 +18,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link com.seneau.senerh.domain.Agents}.
@@ -85,18 +83,10 @@ public class AgentsResource {
     /**
      * {@code GET  /agents} : get all the agents.
      *
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of agents in body.
      */
     @GetMapping("/agents")
-    public List<Agents> getAllAgents(@RequestParam(required = false) String filter) {
-        if ("historiqueconge-is-null".equals(filter)) {
-            log.debug("REST request to get all Agentss where historiqueConge is null");
-            return StreamSupport
-                .stream(agentsRepository.findAll().spliterator(), false)
-                .filter(agents -> agents.getHistoriqueConge() == null)
-                .collect(Collectors.toList());
-        }
+    public List<Agents> getAllAgents() {
         log.debug("REST request to get all Agents");
         return agentsRepository.findAll();
     }

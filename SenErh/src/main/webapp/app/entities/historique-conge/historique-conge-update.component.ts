@@ -17,7 +17,7 @@ import { AgentsService } from 'app/entities/agents/agents.service';
 })
 export class HistoriqueCongeUpdateComponent implements OnInit {
   isSaving = false;
-  agents: IAgents[] = [];
+  idagents: IAgents[] = [];
   dateDernierDepartDp: any;
   dateDernierRetourDp: any;
 
@@ -25,7 +25,7 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
     id: [],
     dateDernierDepart: [null, [Validators.required]],
     dateDernierRetour: [null, [Validators.required]],
-    agents: [],
+    idAgent: [],
   });
 
   constructor(
@@ -47,17 +47,17 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
           })
         )
         .subscribe((resBody: IAgents[]) => {
-          if (!historiqueConge.agents || !historiqueConge.agents.id) {
-            this.agents = resBody;
+          if (!historiqueConge.idAgent || !historiqueConge.idAgent.id) {
+            this.idagents = resBody;
           } else {
             this.agentsService
-              .find(historiqueConge.agents.id)
+              .find(historiqueConge.idAgent.id)
               .pipe(
                 map((subRes: HttpResponse<IAgents>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IAgents[]) => (this.agents = concatRes));
+              .subscribe((concatRes: IAgents[]) => (this.idagents = concatRes));
           }
         });
     });
@@ -68,7 +68,7 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
       id: historiqueConge.id,
       dateDernierDepart: historiqueConge.dateDernierDepart,
       dateDernierRetour: historiqueConge.dateDernierRetour,
-      agents: historiqueConge.agents,
+      idAgent: historiqueConge.idAgent,
     });
   }
 
@@ -92,7 +92,7 @@ export class HistoriqueCongeUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       dateDernierDepart: this.editForm.get(['dateDernierDepart'])!.value,
       dateDernierRetour: this.editForm.get(['dateDernierRetour'])!.value,
-      agents: this.editForm.get(['agents'])!.value,
+      idAgent: this.editForm.get(['idAgent'])!.value,
     };
   }
 

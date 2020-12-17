@@ -2,11 +2,6 @@
   "name": "Agents",
   "fields": [
     {
-      "fieldName": "matrice",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
       "fieldName": "nom",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
@@ -49,18 +44,10 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "historiqueConge",
-      "otherEntityRelationshipName": "agents",
-      "relationshipName": "historiqueConge",
-      "ownerSide": false
-    },
-    {
-      "relationshipType": "many-to-one",
+      "relationshipType": "one-to-many",
       "otherEntityName": "conge",
-      "otherEntityRelationshipName": "agents",
-      "relationshipName": "conge",
-      "otherEntityField": "id"
+      "otherEntityRelationshipName": "idAgent",
+      "relationshipName": "idConge"
     }
   ],
   "changelogDate": "20201217080922",

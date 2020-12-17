@@ -8,10 +8,6 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="senErhApp.agents.matrice">Matrice</span></dt>
-                <dd>
-                    <span>{{ agents.matrice }}</span>
-                </dd>
                 <dt><span jhiTranslate="senErhApp.agents.nom">Nom</span></dt>
                 <dd>
                     <span>{{ agents.nom }}</span>
@@ -43,12 +39,6 @@
                 <dt><span jhiTranslate="senErhApp.agents.taux">Taux</span></dt>
                 <dd>
                     <span>{{ agents.taux }}</span>
-                </dd>
-                <dt><span jhiTranslate="senErhApp.agents.conge">Conge</span></dt>
-                <dd>
-                    <div *ngIf="agents.conge">
-                        <a [routerLink]="['/conge', agents.conge?.id, 'view']">{{ agents.conge?.id }}</a>
-                    </div>
                 </dd>
             </dl>
 

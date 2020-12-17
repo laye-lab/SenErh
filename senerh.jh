@@ -43,7 +43,7 @@ enum Statut {
 }
 
 entity Agents {
-	Matrice String required
+	id Integer required
 	Nom String required
  	Equipe Integer required
     Direction  String required
@@ -70,13 +70,12 @@ entity HistoriqueConge {
      DateDernierRetour LocalDate required 
 }
 
-
 relationship OneToMany {
-  Conge to Agents
+Agents{IdConge} to Conge{IdAgent}
 }
 relationship OneToOne {
-   ValidationStep to  Conge ,
-    HistoriqueConge to  Agents 
+   Conge{ValidationStep} to ValidationStep 
+   HistoriqueConge{IdAgent} to  Agents 
 }
 
 

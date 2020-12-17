@@ -30,9 +30,6 @@ import com.seneau.senerh.domain.enumeration.Statut;
 @WithMockUser
 public class AgentsResourceIT {
 
-    private static final String DEFAULT_MATRICE = "AAAAAAAAAA";
-    private static final String UPDATED_MATRICE = "BBBBBBBBBB";
-
     private static final String DEFAULT_NOM = "AAAAAAAAAA";
     private static final String UPDATED_NOM = "BBBBBBBBBB";
 
@@ -76,7 +73,6 @@ public class AgentsResourceIT {
      */
     public static Agents createEntity(EntityManager em) {
         Agents agents = new Agents()
-            .matrice(DEFAULT_MATRICE)
             .nom(DEFAULT_NOM)
             .equipe(DEFAULT_EQUIPE)
             .direction(DEFAULT_DIRECTION)
@@ -95,7 +91,6 @@ public class AgentsResourceIT {
      */
     public static Agents createUpdatedEntity(EntityManager em) {
         Agents agents = new Agents()
-            .matrice(UPDATED_MATRICE)
             .nom(UPDATED_NOM)
             .equipe(UPDATED_EQUIPE)
             .direction(UPDATED_DIRECTION)
@@ -126,7 +121,6 @@ public class AgentsResourceIT {
         List<Agents> agentsList = agentsRepository.findAll();
         assertThat(agentsList).hasSize(databaseSizeBeforeCreate + 1);
         Agents testAgents = agentsList.get(agentsList.size() - 1);
-        assertThat(testAgents.getMatrice()).isEqualTo(DEFAULT_MATRICE);
         assertThat(testAgents.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testAgents.getEquipe()).isEqualTo(DEFAULT_EQUIPE);
         assertThat(testAgents.getDirection()).isEqualTo(DEFAULT_DIRECTION);
@@ -156,25 +150,6 @@ public class AgentsResourceIT {
         assertThat(agentsList).hasSize(databaseSizeBeforeCreate);
     }
 
-
-    @Test
-    @Transactional
-    public void checkMatriceIsRequired() throws Exception {
-        int databaseSizeBeforeTest = agentsRepository.findAll().size();
-        // set the field null
-        agents.setMatrice(null);
-
-        // Create the Agents, which fails.
-
-
-        restAgentsMockMvc.perform(post("/api/agents")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(agents)))
-            .andExpect(status().isBadRequest());
-
-        List<Agents> agentsList = agentsRepository.findAll();
-        assertThat(agentsList).hasSize(databaseSizeBeforeTest);
-    }
 
     @Test
     @Transactional
@@ -320,7 +295,6 @@ public class AgentsResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(agents.getId().intValue())))
-            .andExpect(jsonPath("$.[*].matrice").value(hasItem(DEFAULT_MATRICE)))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
             .andExpect(jsonPath("$.[*].equipe").value(hasItem(DEFAULT_EQUIPE)))
             .andExpect(jsonPath("$.[*].direction").value(hasItem(DEFAULT_DIRECTION)))
@@ -342,7 +316,6 @@ public class AgentsResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(agents.getId().intValue()))
-            .andExpect(jsonPath("$.matrice").value(DEFAULT_MATRICE))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
             .andExpect(jsonPath("$.equipe").value(DEFAULT_EQUIPE))
             .andExpect(jsonPath("$.direction").value(DEFAULT_DIRECTION))
@@ -373,7 +346,6 @@ public class AgentsResourceIT {
         // Disconnect from session so that the updates on updatedAgents are not directly saved in db
         em.detach(updatedAgents);
         updatedAgents
-            .matrice(UPDATED_MATRICE)
             .nom(UPDATED_NOM)
             .equipe(UPDATED_EQUIPE)
             .direction(UPDATED_DIRECTION)
@@ -392,7 +364,6 @@ public class AgentsResourceIT {
         List<Agents> agentsList = agentsRepository.findAll();
         assertThat(agentsList).hasSize(databaseSizeBeforeUpdate);
         Agents testAgents = agentsList.get(agentsList.size() - 1);
-        assertThat(testAgents.getMatrice()).isEqualTo(UPDATED_MATRICE);
         assertThat(testAgents.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testAgents.getEquipe()).isEqualTo(UPDATED_EQUIPE);
         assertThat(testAgents.getDirection()).isEqualTo(UPDATED_DIRECTION);

@@ -29,7 +29,6 @@ export class AgentsUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  matriceInput = element(by.id('field_matrice'));
   nomInput = element(by.id('field_nom'));
   equipeInput = element(by.id('field_equipe'));
   directionInput = element(by.id('field_direction'));
@@ -39,18 +38,8 @@ export class AgentsUpdatePage {
   affectationInput = element(by.id('field_affectation'));
   tauxInput = element(by.id('field_taux'));
 
-  congeSelect = element(by.id('field_conge'));
-
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setMatriceInput(matrice: string): Promise<void> {
-    await this.matriceInput.sendKeys(matrice);
-  }
-
-  async getMatriceInput(): Promise<string> {
-    return await this.matriceInput.getAttribute('value');
   }
 
   async setNomInput(nom: string): Promise<void> {
@@ -119,22 +108,6 @@ export class AgentsUpdatePage {
 
   async getTauxInput(): Promise<string> {
     return await this.tauxInput.getAttribute('value');
-  }
-
-  async congeSelectLastOption(): Promise<void> {
-    await this.congeSelect.all(by.tagName('option')).last().click();
-  }
-
-  async congeSelectOption(option: string): Promise<void> {
-    await this.congeSelect.sendKeys(option);
-  }
-
-  getCongeSelect(): ElementFinder {
-    return this.congeSelect;
-  }
-
-  async getCongeSelectedOption(): Promise<string> {
-    return await this.congeSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

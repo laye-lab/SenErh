@@ -12,18 +12,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="senErhApp.agents.matrice" for="field_matrice">Matrice</label>
-                    <input type="text" class="form-control" name="matrice" id="field_matrice"
-                           formControlName="matrice"/>
-                    <div *ngIf="editForm.get('matrice')!.invalid && (editForm.get('matrice')!.dirty || editForm.get('matrice')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('matrice')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="senErhApp.agents.nom" for="field_nom">Nom</label>
                     <input type="text" class="form-control" name="nom" id="field_nom"
                            formControlName="nom"/>
@@ -118,14 +106,6 @@
                     <label class="form-control-label" jhiTranslate="senErhApp.agents.taux" for="field_taux">Taux</label>
                     <input type="number" class="form-control" name="taux" id="field_taux"
                            formControlName="taux"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="senErhApp.agents.conge" for="field_conge">Conge</label>
-                    <select class="form-control" id="field_conge" name="conge" formControlName="conge">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="congeOption.id === editForm.get('conge')!.value?.id ? editForm.get('conge')!.value : congeOption" *ngFor="let congeOption of conges; trackBy: trackById">{{ congeOption.id }}</option>
-                    </select>
                 </div>
             </div>
 

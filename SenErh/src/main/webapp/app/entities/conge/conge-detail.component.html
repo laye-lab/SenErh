@@ -16,6 +16,18 @@
                 <dd>
                     <span>{{ conge.dateDebut }}</span>
                 </dd>
+                <dt><span jhiTranslate="senErhApp.conge.validationStep">Validation Step</span></dt>
+                <dd>
+                    <div *ngIf="conge.validationStep">
+                        <a [routerLink]="['/validation-step', conge.validationStep?.id, 'view']">{{ conge.validationStep?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.conge.idAgent">Id Agent</span></dt>
+                <dd>
+                    <div *ngIf="conge.idAgent">
+                        <a [routerLink]="['/agents', conge.idAgent?.id, 'view']">{{ conge.idAgent?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

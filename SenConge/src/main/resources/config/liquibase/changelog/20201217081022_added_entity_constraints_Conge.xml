@@ -14,9 +14,9 @@
                                  referencedColumnNames="id"
                                  referencedTableName="validation_step"/>
 
-        <addForeignKeyConstraint baseColumnNames="agents_id"
+        <addForeignKeyConstraint baseColumnNames="id_agent_id"
                                  baseTableName="conge"
-                                 constraintName="fk_conge_agents_id"
+                                 constraintName="fk_conge_id_agent_id"
                                  referencedColumnNames="id"
                                  referencedTableName="agents"/>
 

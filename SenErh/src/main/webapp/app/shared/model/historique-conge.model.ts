@@ -5,9 +5,9 @@ export interface IHistoriqueConge {
   id?: number;
   dateDernierDepart?: Moment;
   dateDernierRetour?: Moment;
-  agents?: IAgents;
+  idAgent?: IAgents;
 }
 
 export class HistoriqueConge implements IHistoriqueConge {
-  constructor(public id?: number, public dateDernierDepart?: Moment, public dateDernierRetour?: Moment, public agents?: IAgents) {}
+  constructor(public id?: number, public dateDernierDepart?: Moment, public dateDernierRetour?: Moment, public idAgent?: IAgents) {}
 }

@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { IAgents, Agents } from 'app/shared/model/agents.model';
 import { AgentsService } from './agents.service';
-import { IConge } from 'app/shared/model/conge.model';
-import { CongeService } from 'app/entities/conge/conge.service';
 
 @Component({
   selector: 'jhi-agents-update',
@@ -16,11 +14,9 @@ import { CongeService } from 'app/entities/conge/conge.service';
 })
 export class AgentsUpdateComponent implements OnInit {
   isSaving = false;
-  conges: IConge[] = [];
 
   editForm = this.fb.group({
     id: [],
-    matrice: [null, [Validators.required]],
     nom: [null, [Validators.required]],
     equipe: [null, [Validators.required]],
     direction: [null, [Validators.required]],
@@ -29,28 +25,19 @@ export class AgentsUpdateComponent implements OnInit {
     statut: [null, [Validators.required]],
     affectation: [null, [Validators.required]],
     taux: [],
-    conge: [],
   });
 
-  constructor(
-    protected agentsService: AgentsService,
-    protected congeService: CongeService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected agentsService: AgentsService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ agents }) => {
       this.updateForm(agents);
-
-      this.congeService.query().subscribe((res: HttpResponse<IConge[]>) => (this.conges = res.body || []));
     });
   }
 
   updateForm(agents: IAgents): void {
     this.editForm.patchValue({
       id: agents.id,
-      matrice: agents.matrice,
       nom: agents.nom,
       equipe: agents.equipe,
       direction: agents.direction,
@@ -59,7 +46,6 @@ export class AgentsUpdateComponent implements OnInit {
       statut: agents.statut,
       affectation: agents.affectation,
       taux: agents.taux,
-      conge: agents.conge,
     });
   }
 
@@ -81,7 +67,6 @@ export class AgentsUpdateComponent implements OnInit {
     return {
       ...new Agents(),
       id: this.editForm.get(['id'])!.value,
-      matrice: this.editForm.get(['matrice'])!.value,
       nom: this.editForm.get(['nom'])!.value,
       equipe: this.editForm.get(['equipe'])!.value,
       direction: this.editForm.get(['direction'])!.value,
@@ -90,7 +75,6 @@ export class AgentsUpdateComponent implements OnInit {
       statut: this.editForm.get(['statut'])!.value,
       affectation: this.editForm.get(['affectation'])!.value,
       taux: this.editForm.get(['taux'])!.value,
-      conge: this.editForm.get(['conge'])!.value,
     };
   }
 
@@ -108,9 +92,5 @@ export class AgentsUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IConge): any {
-    return item.id;
   }
 }

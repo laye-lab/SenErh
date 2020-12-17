@@ -33,7 +33,7 @@ public class HistoriqueConge implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private Agents agents;
+    private Agents idAgent;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -70,17 +70,17 @@ public class HistoriqueConge implements Serializable {
         this.dateDernierRetour = dateDernierRetour;
     }
 
-    public Agents getAgents() {
-        return agents;
+    public Agents getIdAgent() {
+        return idAgent;
     }
 
-    public HistoriqueConge agents(Agents agents) {
-        this.agents = agents;
+    public HistoriqueConge idAgent(Agents agents) {
+        this.idAgent = agents;
         return this;
     }
 
-    public void setAgents(Agents agents) {
-        this.agents = agents;
+    public void setIdAgent(Agents agents) {
+        this.idAgent = agents;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
