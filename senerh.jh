@@ -1,0 +1,83 @@
+
+application {
+  config {
+     baseName SenErh,
+    applicationType gateway,
+    packageName com.seneau.senerh,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    cacheProvider hazelcast,
+    buildTool gradle,
+    clientFramework angular,
+    useSass true,
+    testFrameworks [protractor]
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName SenConge,
+    applicationType microservice,
+    packageName com.seneau.senerh,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    buildTool gradle,
+    serverPort 9081,
+    skipUserManagement true
+  }
+  
+  
+  entities 
+  Agents,
+  Conge ,
+  ValidationStep,
+  HistoriqueConge
+}
+
+
+enum Statut {
+    AMA, CAD , EXE 
+}
+
+entity Agents {
+	Matrice String required
+	Nom String required
+ 	Equipe Integer required
+    Direction  String required
+    Etablissement String required
+    Fonction  String required 
+    Statut Statut required
+    Affectation String required
+    Taux Integer 
+}
+
+entity Conge {
+	IdConge Integer required 
+    DateDebut String required 
+}
+
+entity ValidationStep {
+	id Integer required 
+    Step Integer required 
+}
+
+entity HistoriqueConge {
+	id Integer required 
+     DateDernierDepart Integer required 
+     DateDernierRetour Integer required 
+}
+
+
+relationship OneToMany {
+  Agents to Conge
+}
+relationship OneToOne {
+   Conge to ValidationStep,
+   Agents to HistoriqueConge
+}
+
+
+    
