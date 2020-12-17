@@ -1,0 +1,24 @@
+{
+  "senErhApp": {
+    "historiqueConge": {
+      "home": {
+        "title": "Historique Conges",
+        "createLabel": "Create a new Historique Conge",
+        "createOrEditLabel": "Create or edit a Historique Conge",
+        "notFound": "No Historique Conges found"
+      },
+      "created": "A new Historique Conge is created with identifier {{ param }}",
+      "updated": "A Historique Conge is updated with identifier {{ param }}",
+      "deleted": "A Historique Conge is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Historique Conge {{ id }}?"
+      },
+      "detail": {
+        "title": "Historique Conge"
+      },
+      "dateDernierDepart": "Date Dernier Depart",
+      "dateDernierRetour": "Date Dernier Retour",
+      "agents": "Agents"
+    }
+  }
+}

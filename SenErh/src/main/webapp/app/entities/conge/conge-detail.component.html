@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="conge">
+            <h2><span jhiTranslate="senErhApp.conge.detail.title">Conge</span> {{ conge.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="senErhApp.conge.idConge">Id Conge</span></dt>
+                <dd>
+                    <span>{{ conge.idConge }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.conge.dateDebut">Date Debut</span></dt>
+                <dd>
+                    <span>{{ conge.dateDebut }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.conge.validationStep">Validation Step</span></dt>
+                <dd>
+                    <div *ngIf="conge.validationStep">
+                        <a [routerLink]="['/validation-step', conge.validationStep?.id, 'view']">{{ conge.validationStep?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.conge.agents">Agents</span></dt>
+                <dd>
+                    <div *ngIf="conge.agents">
+                        <a [routerLink]="['/agents', conge.agents?.id, 'view']">{{ conge.agents?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/conge', conge.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

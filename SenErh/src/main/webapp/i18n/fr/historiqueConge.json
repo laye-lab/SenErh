@@ -1,0 +1,24 @@
+{
+  "senErhApp": {
+    "historiqueConge": {
+      "home": {
+        "title": "HistoriqueConges",
+        "createLabel": "Créer un nouveau Historique Conge",
+        "createOrEditLabel": "Créer ou éditer un Historique Conge",
+        "notFound": "Aucun Historique Conge trouvé"
+      },
+      "created": "Un nouveau Historique Conge a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Historique Conge avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Historique Conge avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Historique Conge {{ id }} ?"
+      },
+      "detail": {
+        "title": "Historique Conge"
+      },
+      "dateDernierDepart": "Date Dernier Depart",
+      "dateDernierRetour": "Date Dernier Retour",
+      "agents": "Agents"
+    }
+  }
+}

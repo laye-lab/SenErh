@@ -1,0 +1,32 @@
+{
+  "senErhApp": {
+    "agents": {
+      "home": {
+        "title": "Agents",
+        "createLabel": "Create a new Agents",
+        "createOrEditLabel": "Create or edit a Agents",
+        "notFound": "No Agents found"
+      },
+      "created": "A new Agents is created with identifier {{ param }}",
+      "updated": "A Agents is updated with identifier {{ param }}",
+      "deleted": "A Agents is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Agents {{ id }}?"
+      },
+      "detail": {
+        "title": "Agents"
+      },
+      "matrice": "Matrice",
+      "nom": "Nom",
+      "equipe": "Equipe",
+      "direction": "Direction",
+      "etablissement": "Etablissement",
+      "fonction": "Fonction",
+      "statut": "Statut",
+      "affectation": "Affectation",
+      "taux": "Taux",
+      "historiqueConge": "Historique Conge",
+      "conge": "Conge"
+    }
+  }
+}

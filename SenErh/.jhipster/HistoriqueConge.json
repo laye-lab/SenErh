@@ -1,0 +1,35 @@
+{
+  "name": "HistoriqueConge",
+  "fields": [
+    {
+      "fieldName": "dateDernierDepart",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDernierRetour",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "agents",
+      "otherEntityRelationshipName": "historiqueConge",
+      "relationshipName": "agents",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201217081222",
+  "entityTableName": "historique_conge",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["SenErh", "SenConge"]
+}

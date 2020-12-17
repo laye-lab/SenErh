@@ -1,0 +1,23 @@
+{
+  "senErhApp": {
+    "validationStep": {
+      "home": {
+        "title": "Validation Steps",
+        "createLabel": "Create a new Validation Step",
+        "createOrEditLabel": "Create or edit a Validation Step",
+        "notFound": "No Validation Steps found"
+      },
+      "created": "A new Validation Step is created with identifier {{ param }}",
+      "updated": "A Validation Step is updated with identifier {{ param }}",
+      "deleted": "A Validation Step is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Validation Step {{ id }}?"
+      },
+      "detail": {
+        "title": "Validation Step"
+      },
+      "step": "Step",
+      "conge": "Conge"
+    }
+  }
+}

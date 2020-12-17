@@ -1,0 +1,143 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-agents-heading" jhiTranslate="senErhApp.agents.home.createOrEditLabel">Create or edit a Agents</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.matrice" for="field_matrice">Matrice</label>
+                    <input type="text" class="form-control" name="matrice" id="field_matrice"
+                           formControlName="matrice"/>
+                    <div *ngIf="editForm.get('matrice')!.invalid && (editForm.get('matrice')!.dirty || editForm.get('matrice')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('matrice')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           formControlName="nom"/>
+                    <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.equipe" for="field_equipe">Equipe</label>
+                    <input type="number" class="form-control" name="equipe" id="field_equipe"
+                           formControlName="equipe"/>
+                    <div *ngIf="editForm.get('equipe')!.invalid && (editForm.get('equipe')!.dirty || editForm.get('equipe')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('equipe')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('equipe')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.direction" for="field_direction">Direction</label>
+                    <input type="text" class="form-control" name="direction" id="field_direction"
+                           formControlName="direction"/>
+                    <div *ngIf="editForm.get('direction')!.invalid && (editForm.get('direction')!.dirty || editForm.get('direction')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('direction')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.etablissement" for="field_etablissement">Etablissement</label>
+                    <input type="text" class="form-control" name="etablissement" id="field_etablissement"
+                           formControlName="etablissement"/>
+                    <div *ngIf="editForm.get('etablissement')!.invalid && (editForm.get('etablissement')!.dirty || editForm.get('etablissement')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('etablissement')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.fonction" for="field_fonction">Fonction</label>
+                    <input type="text" class="form-control" name="fonction" id="field_fonction"
+                           formControlName="fonction"/>
+                    <div *ngIf="editForm.get('fonction')!.invalid && (editForm.get('fonction')!.dirty || editForm.get('fonction')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fonction')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.statut" for="field_statut">Statut</label>
+                    <select class="form-control" name="statut" formControlName="statut" id="field_statut">
+                        <option value="AMA">{{ 'senErhApp.Statut.AMA' | translate }}</option>
+                        <option value="CAD">{{ 'senErhApp.Statut.CAD' | translate }}</option>
+                        <option value="EXE">{{ 'senErhApp.Statut.EXE' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('statut')!.invalid && (editForm.get('statut')!.dirty || editForm.get('statut')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('statut')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.affectation" for="field_affectation">Affectation</label>
+                    <input type="text" class="form-control" name="affectation" id="field_affectation"
+                           formControlName="affectation"/>
+                    <div *ngIf="editForm.get('affectation')!.invalid && (editForm.get('affectation')!.dirty || editForm.get('affectation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('affectation')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.taux" for="field_taux">Taux</label>
+                    <input type="number" class="form-control" name="taux" id="field_taux"
+                           formControlName="taux"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="senErhApp.agents.historiqueConge" for="field_historiqueConge">Historique Conge</label>
+                    <select class="form-control" id="field_historiqueConge" name="historiqueConge" formControlName="historiqueConge">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="historiqueCongeOption.id === editForm.get('historiqueConge')!.value?.id ? editForm.get('historiqueConge')!.value : historiqueCongeOption" *ngFor="let historiqueCongeOption of historiqueconges; trackBy: trackById">{{ historiqueCongeOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
