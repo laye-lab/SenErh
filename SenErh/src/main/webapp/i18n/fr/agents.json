@@ -24,6 +24,7 @@
       "statut": "Statut",
       "affectation": "Affectation",
       "taux": "Taux",
+      "historiqueConge": "Historique Conge",
       "conge": "Conge"
     }
   }

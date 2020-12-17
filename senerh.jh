@@ -74,8 +74,8 @@ relationship OneToMany {
 Agents{Conge} to Conge{Agents}
 }
 relationship OneToOne {
-   Conge{ValidationStep} to ValidationStep 
-   HistoriqueConge{Agents} to  Agents 
+   ValidationStep   to Conge 
+    Agents  to  HistoriqueConge
 }
 
 

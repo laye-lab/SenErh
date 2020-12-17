@@ -18,8 +18,7 @@
       "otherEntityName": "agents",
       "otherEntityRelationshipName": "historiqueConge",
       "relationshipName": "agents",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "ownerSide": false
     }
   ],
   "changelogDate": "20201217081222",

@@ -25,7 +25,6 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.conge.idConge">Id Conge</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.conge.dateDebut">Date Debut</span></th>
-                    <th scope="col" ><span jhiTranslate="senErhApp.conge.validationStep">Validation Step</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.conge.agents">Agents</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -35,11 +34,6 @@
                     <td><a [routerLink]="['/conge', conge.id, 'view']">{{ conge.id }}</a></td>
                     <td>{{ conge.idConge }}</td>
                     <td>{{ conge.dateDebut | date:'mediumDate' }}</td>
-                    <td>
-                        <div *ngIf="conge.validationStep">
-                            <a [routerLink]="['/validation-step', conge.validationStep?.id, 'view']" >{{ conge.validationStep?.id }}</a>
-                        </div>
-                    </td>
                     <td>
                         <div *ngIf="conge.agents">
                             <a [routerLink]="['/agents', conge.agents?.id, 'view']" >{{ conge.agents?.id }}</a>

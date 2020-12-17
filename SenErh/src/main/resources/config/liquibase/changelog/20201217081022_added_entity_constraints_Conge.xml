@@ -8,12 +8,6 @@
     -->
     <changeSet id="20201217081022-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="validation_step_id"
-                                 baseTableName="conge"
-                                 constraintName="fk_conge_validation_step_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="validation_step"/>
-
         <addForeignKeyConstraint baseColumnNames="agents_id"
                                  baseTableName="conge"
                                  constraintName="fk_conge_agents_id"

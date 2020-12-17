@@ -22,9 +22,6 @@
             <column name="date_debut" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="validation_step_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_conge_validation_step_id" />
-            </column>
             <column name="agents_id" type="bigint">
                 <constraints nullable="true" />
             </column>

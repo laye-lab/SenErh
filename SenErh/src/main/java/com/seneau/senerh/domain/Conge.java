@@ -1,5 +1,6 @@
 package com.seneau.senerh.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -32,8 +33,8 @@ public class Conge implements Serializable {
     @Column(name = "date_debut", nullable = false)
     private LocalDate dateDebut;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @OneToOne(mappedBy = "conge")
+    @JsonIgnore
     private ValidationStep validationStep;
 
     @ManyToOne

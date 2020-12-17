@@ -40,6 +40,12 @@
                 <dd>
                     <span>{{ agents.taux }}</span>
                 </dd>
+                <dt><span jhiTranslate="senErhApp.agents.historiqueConge">Historique Conge</span></dt>
+                <dd>
+                    <div *ngIf="agents.historiqueConge">
+                        <a [routerLink]="['/historique-conge', agents.historiqueConge?.id, 'view']">{{ agents.historiqueConge?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

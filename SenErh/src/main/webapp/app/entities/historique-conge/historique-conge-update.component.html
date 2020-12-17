@@ -42,14 +42,6 @@
                         </small>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="senErhApp.historiqueConge.agents" for="field_agents">Agents</label>
-                    <select class="form-control" id="field_agents" name="agents" formControlName="agents">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="agentsOption.id === editForm.get('agents')!.value?.id ? editForm.get('agents')!.value : agentsOption" *ngFor="let agentsOption of agents; trackBy: trackById">{{ agentsOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

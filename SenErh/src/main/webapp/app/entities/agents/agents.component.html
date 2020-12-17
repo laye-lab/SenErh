@@ -31,6 +31,7 @@
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.statut">Statut</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.affectation">Affectation</span></th>
                     <th scope="col" ><span jhiTranslate="senErhApp.agents.taux">Taux</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.historiqueConge">Historique Conge</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -45,6 +46,11 @@
                     <td jhiTranslate="{{ 'senErhApp.Statut.' + agents.statut }}">{{ agents.statut }}</td>
                     <td>{{ agents.affectation }}</td>
                     <td>{{ agents.taux }}</td>
+                    <td>
+                        <div *ngIf="agents.historiqueConge">
+                            <a [routerLink]="['/historique-conge', agents.historiqueConge?.id, 'view']" >{{ agents.historiqueConge?.id }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

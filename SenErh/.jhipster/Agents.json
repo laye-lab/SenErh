@@ -44,6 +44,14 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "historiqueConge",
+      "otherEntityRelationshipName": "agents",
+      "relationshipName": "historiqueConge",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
       "relationshipType": "one-to-many",
       "otherEntityName": "conge",
       "otherEntityRelationshipName": "agents",

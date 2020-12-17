@@ -31,6 +31,8 @@ export class ValidationStepUpdatePage {
 
   stepInput = element(by.id('field_step'));
 
+  congeSelect = element(by.id('field_conge'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
@@ -41,6 +43,22 @@ export class ValidationStepUpdatePage {
 
   async getStepInput(): Promise<string> {
     return await this.stepInput.getAttribute('value');
+  }
+
+  async congeSelectLastOption(): Promise<void> {
+    await this.congeSelect.all(by.tagName('option')).last().click();
+  }
+
+  async congeSelectOption(option: string): Promise<void> {
+    await this.congeSelect.sendKeys(option);
+  }
+
+  getCongeSelect(): ElementFinder {
+    return this.congeSelect;
+  }
+
+  async getCongeSelectedOption(): Promise<string> {
+    return await this.congeSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

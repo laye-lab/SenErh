@@ -4,9 +4,12 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IAgents, Agents } from 'app/shared/model/agents.model';
 import { AgentsService } from './agents.service';
+import { IHistoriqueConge } from 'app/shared/model/historique-conge.model';
+import { HistoriqueCongeService } from 'app/entities/historique-conge/historique-conge.service';
 
 @Component({
   selector: 'jhi-agents-update',
@@ -14,6 +17,7 @@ import { AgentsService } from './agents.service';
 })
 export class AgentsUpdateComponent implements OnInit {
   isSaving = false;
+  historiqueconges: IHistoriqueConge[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -25,13 +29,41 @@ export class AgentsUpdateComponent implements OnInit {
     statut: [null, [Validators.required]],
     affectation: [null, [Validators.required]],
     taux: [],
+    historiqueConge: [],
   });
 
-  constructor(protected agentsService: AgentsService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected agentsService: AgentsService,
+    protected historiqueCongeService: HistoriqueCongeService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ agents }) => {
       this.updateForm(agents);
+
+      this.historiqueCongeService
+        .query({ filter: 'agents-is-null' })
+        .pipe(
+          map((res: HttpResponse<IHistoriqueConge[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IHistoriqueConge[]) => {
+          if (!agents.historiqueConge || !agents.historiqueConge.id) {
+            this.historiqueconges = resBody;
+          } else {
+            this.historiqueCongeService
+              .find(agents.historiqueConge.id)
+              .pipe(
+                map((subRes: HttpResponse<IHistoriqueConge>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IHistoriqueConge[]) => (this.historiqueconges = concatRes));
+          }
+        });
     });
   }
 
@@ -46,6 +78,7 @@ export class AgentsUpdateComponent implements OnInit {
       statut: agents.statut,
       affectation: agents.affectation,
       taux: agents.taux,
+      historiqueConge: agents.historiqueConge,
     });
   }
 
@@ -75,6 +108,7 @@ export class AgentsUpdateComponent implements OnInit {
       statut: this.editForm.get(['statut'])!.value,
       affectation: this.editForm.get(['affectation'])!.value,
       taux: this.editForm.get(['taux'])!.value,
+      historiqueConge: this.editForm.get(['historiqueConge'])!.value,
     };
   }
 
@@ -92,5 +126,9 @@ export class AgentsUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IHistoriqueConge): any {
+    return item.id;
   }
 }

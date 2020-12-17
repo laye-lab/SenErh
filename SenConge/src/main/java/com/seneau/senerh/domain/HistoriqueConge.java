@@ -1,5 +1,6 @@
 package com.seneau.senerh.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -31,8 +32,8 @@ public class HistoriqueConge implements Serializable {
     @Column(name = "date_dernier_retour", nullable = false)
     private LocalDate dateDernierRetour;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @OneToOne(mappedBy = "historiqueConge")
+    @JsonIgnore
     private Agents agents;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
