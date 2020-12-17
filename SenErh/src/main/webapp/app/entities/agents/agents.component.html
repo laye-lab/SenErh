@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="senErhApp.agents.home.title">Agents</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-agents" [routerLink]="['/agents/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="senErhApp.agents.home.createLabel">
+            Create a new Agents
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="agents?.length === 0">
+        <span jhiTranslate="senErhApp.agents.home.notFound">No agents found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="agents && agents.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.matrice">Matrice</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.nom">Nom</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.equipe">Equipe</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.direction">Direction</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.etablissement">Etablissement</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.fonction">Fonction</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.statut">Statut</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.affectation">Affectation</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.taux">Taux</span></th>
+                    <th scope="col" ><span jhiTranslate="senErhApp.agents.historiqueConge">Historique Conge</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let agents of agents ;trackBy: trackId">
+                    <td><a [routerLink]="['/agents', agents.id, 'view']">{{ agents.id }}</a></td>
+                    <td>{{ agents.matrice }}</td>
+                    <td>{{ agents.nom }}</td>
+                    <td>{{ agents.equipe }}</td>
+                    <td>{{ agents.direction }}</td>
+                    <td>{{ agents.etablissement }}</td>
+                    <td>{{ agents.fonction }}</td>
+                    <td jhiTranslate="{{ 'senErhApp.Statut.' + agents.statut }}">{{ agents.statut }}</td>
+                    <td>{{ agents.affectation }}</td>
+                    <td>{{ agents.taux }}</td>
+                    <td>
+                        <div *ngIf="agents.historiqueConge">
+                            <a [routerLink]="['/historique-conge', agents.historiqueConge?.id, 'view']" >{{ agents.historiqueConge?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/agents', agents.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/agents', agents.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(agents)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

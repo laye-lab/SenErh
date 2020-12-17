@@ -1,0 +1,43 @@
+{
+  "name": "Conge",
+  "fields": [
+    {
+      "fieldName": "idConge",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "validationStep",
+      "otherEntityRelationshipName": "conge",
+      "relationshipName": "validationStep",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "agents",
+      "otherEntityRelationshipName": "conge",
+      "relationshipName": "agents",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201217081022",
+  "entityTableName": "conge",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["SenErh", "SenConge"]
+}

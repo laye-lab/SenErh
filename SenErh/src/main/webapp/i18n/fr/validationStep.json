@@ -1,0 +1,23 @@
+{
+  "senErhApp": {
+    "validationStep": {
+      "home": {
+        "title": "ValidationSteps",
+        "createLabel": "Créer un nouveau Validation Step",
+        "createOrEditLabel": "Créer ou éditer un Validation Step",
+        "notFound": "Aucun Validation Step trouvé"
+      },
+      "created": "Un nouveau Validation Step a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Validation Step avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Validation Step avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Validation Step {{ id }} ?"
+      },
+      "detail": {
+        "title": "Validation Step"
+      },
+      "step": "Step",
+      "conge": "Conge"
+    }
+  }
+}

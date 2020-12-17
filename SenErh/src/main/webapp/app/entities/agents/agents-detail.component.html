@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="agents">
+            <h2><span jhiTranslate="senErhApp.agents.detail.title">Agents</span> {{ agents.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="senErhApp.agents.matrice">Matrice</span></dt>
+                <dd>
+                    <span>{{ agents.matrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ agents.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.equipe">Equipe</span></dt>
+                <dd>
+                    <span>{{ agents.equipe }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.direction">Direction</span></dt>
+                <dd>
+                    <span>{{ agents.direction }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.etablissement">Etablissement</span></dt>
+                <dd>
+                    <span>{{ agents.etablissement }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.fonction">Fonction</span></dt>
+                <dd>
+                    <span>{{ agents.fonction }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.statut">Statut</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'senErhApp.Statut.' + agents.statut }}">{{ agents.statut }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.affectation">Affectation</span></dt>
+                <dd>
+                    <span>{{ agents.affectation }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.taux">Taux</span></dt>
+                <dd>
+                    <span>{{ agents.taux }}</span>
+                </dd>
+                <dt><span jhiTranslate="senErhApp.agents.historiqueConge">Historique Conge</span></dt>
+                <dd>
+                    <div *ngIf="agents.historiqueConge">
+                        <a [routerLink]="['/historique-conge', agents.historiqueConge?.id, 'view']">{{ agents.historiqueConge?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/agents', agents.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
