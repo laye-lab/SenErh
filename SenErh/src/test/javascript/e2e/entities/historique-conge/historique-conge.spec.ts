@@ -46,7 +46,7 @@ describe('HistoriqueConge e2e test', () => {
     await promise.all([
       historiqueCongeUpdatePage.setDateDernierDepartInput('2000-12-31'),
       historiqueCongeUpdatePage.setDateDernierRetourInput('2000-12-31'),
-      historiqueCongeUpdatePage.idAgentSelectLastOption(),
+      historiqueCongeUpdatePage.agentsSelectLastOption(),
     ]);
 
     expect(await historiqueCongeUpdatePage.getDateDernierDepartInput()).to.eq(

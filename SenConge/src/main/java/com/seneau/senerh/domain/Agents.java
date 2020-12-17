@@ -58,9 +58,9 @@ public class Agents implements Serializable {
     @Column(name = "taux")
     private Integer taux;
 
-    @OneToMany(mappedBy = "idAgent")
+    @OneToMany(mappedBy = "agents")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Conge> idConges = new HashSet<>();
+    private Set<Conge> conges = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -175,29 +175,29 @@ public class Agents implements Serializable {
         this.taux = taux;
     }
 
-    public Set<Conge> getIdConges() {
-        return idConges;
+    public Set<Conge> getConges() {
+        return conges;
     }
 
-    public Agents idConges(Set<Conge> conges) {
-        this.idConges = conges;
+    public Agents conges(Set<Conge> conges) {
+        this.conges = conges;
         return this;
     }
 
-    public Agents addIdConge(Conge conge) {
-        this.idConges.add(conge);
-        conge.setIdAgent(this);
+    public Agents addConge(Conge conge) {
+        this.conges.add(conge);
+        conge.setAgents(this);
         return this;
     }
 
-    public Agents removeIdConge(Conge conge) {
-        this.idConges.remove(conge);
-        conge.setIdAgent(null);
+    public Agents removeConge(Conge conge) {
+        this.conges.remove(conge);
+        conge.setAgents(null);
         return this;
     }
 
-    public void setIdConges(Set<Conge> conges) {
-        this.idConges = conges;
+    public void setConges(Set<Conge> conges) {
+        this.conges = conges;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

@@ -71,11 +71,11 @@ entity HistoriqueConge {
 }
 
 relationship OneToMany {
-Agents{IdConge} to Conge{IdAgent}
+Agents{Conge} to Conge{Agents}
 }
 relationship OneToOne {
    Conge{ValidationStep} to ValidationStep 
-   HistoriqueConge{IdAgent} to  Agents 
+   HistoriqueConge{Agents} to  Agents 
 }
 
 

@@ -37,8 +37,8 @@ public class Conge implements Serializable {
     private ValidationStep validationStep;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "idConges", allowSetters = true)
-    private Agents idAgent;
+    @JsonIgnoreProperties(value = "conges", allowSetters = true)
+    private Agents agents;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -88,17 +88,17 @@ public class Conge implements Serializable {
         this.validationStep = validationStep;
     }
 
-    public Agents getIdAgent() {
-        return idAgent;
+    public Agents getAgents() {
+        return agents;
     }
 
-    public Conge idAgent(Agents agents) {
-        this.idAgent = agents;
+    public Conge agents(Agents agents) {
+        this.agents = agents;
         return this;
     }
 
-    public void setIdAgent(Agents agents) {
-        this.idAgent = agents;
+    public void setAgents(Agents agents) {
+        this.agents = agents;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

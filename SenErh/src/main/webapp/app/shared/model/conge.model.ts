@@ -7,7 +7,7 @@ export interface IConge {
   idConge?: number;
   dateDebut?: Moment;
   validationStep?: IValidationStep;
-  idAgent?: IAgents;
+  agents?: IAgents;
 }
 
 export class Conge implements IConge {
@@ -16,6 +16,6 @@ export class Conge implements IConge {
     public idConge?: number,
     public dateDebut?: Moment,
     public validationStep?: IValidationStep,
-    public idAgent?: IAgents
+    public agents?: IAgents
   ) {}
 }
