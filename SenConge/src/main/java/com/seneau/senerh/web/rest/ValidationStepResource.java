@@ -18,8 +18,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link com.seneau.senerh.domain.ValidationStep}.
@@ -85,18 +83,10 @@ public class ValidationStepResource {
     /**
      * {@code GET  /validation-steps} : get all the validationSteps.
      *
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of validationSteps in body.
      */
     @GetMapping("/validation-steps")
-    public List<ValidationStep> getAllValidationSteps(@RequestParam(required = false) String filter) {
-        if ("conge-is-null".equals(filter)) {
-            log.debug("REST request to get all ValidationSteps where conge is null");
-            return StreamSupport
-                .stream(validationStepRepository.findAll().spliterator(), false)
-                .filter(validationStep -> validationStep.getConge() == null)
-                .collect(Collectors.toList());
-        }
+    public List<ValidationStep> getAllValidationSteps() {
         log.debug("REST request to get all ValidationSteps");
         return validationStepRepository.findAll();
     }

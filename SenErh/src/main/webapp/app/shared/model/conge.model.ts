@@ -1,13 +1,13 @@
 import { Moment } from 'moment';
-import { IValidationStep } from 'app/shared/model/validation-step.model';
 import { IAgents } from 'app/shared/model/agents.model';
+import { IValidationStep } from 'app/shared/model/validation-step.model';
 
 export interface IConge {
   id?: number;
   idConge?: number;
   dateDebut?: Moment;
+  agents?: IAgents[];
   validationStep?: IValidationStep;
-  agents?: IAgents;
 }
 
 export class Conge implements IConge {
@@ -15,7 +15,7 @@ export class Conge implements IConge {
     public id?: number,
     public idConge?: number,
     public dateDebut?: Moment,
-    public validationStep?: IValidationStep,
-    public agents?: IAgents
+    public agents?: IAgents[],
+    public validationStep?: IValidationStep
   ) {}
 }

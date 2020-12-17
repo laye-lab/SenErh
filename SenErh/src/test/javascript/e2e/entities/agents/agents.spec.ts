@@ -50,7 +50,7 @@ describe('Agents e2e test', () => {
       agentsUpdatePage.statutSelectLastOption(),
       agentsUpdatePage.setAffectationInput('affectation'),
       agentsUpdatePage.setTauxInput('5'),
-      agentsUpdatePage.historiqueCongeSelectLastOption(),
+      agentsUpdatePage.congeSelectLastOption(),
     ]);
 
     expect(await agentsUpdatePage.getMatriceInput()).to.eq('matrice', 'Expected Matrice value to be equals to matrice');

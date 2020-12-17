@@ -53,14 +53,14 @@
       "otherEntityName": "historiqueConge",
       "otherEntityRelationshipName": "agents",
       "relationshipName": "historiqueConge",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "ownerSide": false
     },
     {
-      "relationshipType": "one-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityName": "conge",
       "otherEntityRelationshipName": "agents",
-      "relationshipName": "conge"
+      "relationshipName": "conge",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20201217080922",

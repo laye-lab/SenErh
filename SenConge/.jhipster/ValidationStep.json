@@ -13,7 +13,8 @@
       "otherEntityName": "conge",
       "otherEntityRelationshipName": "validationStep",
       "relationshipName": "conge",
-      "ownerSide": false
+      "otherEntityField": "id",
+      "ownerSide": true
     }
   ],
   "changelogDate": "20201217081122",

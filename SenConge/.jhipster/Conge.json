@@ -14,19 +14,17 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "agents",
+      "otherEntityRelationshipName": "conge",
+      "relationshipName": "agents"
+    },
+    {
       "relationshipType": "one-to-one",
       "otherEntityName": "validationStep",
       "otherEntityRelationshipName": "conge",
       "relationshipName": "validationStep",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "agents",
-      "otherEntityRelationshipName": "conge",
-      "relationshipName": "agents",
-      "otherEntityField": "id"
+      "ownerSide": false
     }
   ],
   "changelogDate": "20201217081022",

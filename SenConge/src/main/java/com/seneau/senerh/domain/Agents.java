@@ -1,5 +1,7 @@
 package com.seneau.senerh.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,8 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import com.seneau.senerh.domain.enumeration.Statut;
 
@@ -62,13 +62,13 @@ public class Agents implements Serializable {
     @Column(name = "taux")
     private Integer taux;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @OneToOne(mappedBy = "agents")
+    @JsonIgnore
     private HistoriqueConge historiqueConge;
 
-    @OneToMany(mappedBy = "agents")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Conge> conges = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "agents", allowSetters = true)
+    private Conge conge;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -209,29 +209,17 @@ public class Agents implements Serializable {
         this.historiqueConge = historiqueConge;
     }
 
-    public Set<Conge> getConges() {
-        return conges;
+    public Conge getConge() {
+        return conge;
     }
 
-    public Agents conges(Set<Conge> conges) {
-        this.conges = conges;
+    public Agents conge(Conge conge) {
+        this.conge = conge;
         return this;
     }
 
-    public Agents addConge(Conge conge) {
-        this.conges.add(conge);
-        conge.setAgents(this);
-        return this;
-    }
-
-    public Agents removeConge(Conge conge) {
-        this.conges.remove(conge);
-        conge.setAgents(null);
-        return this;
-    }
-
-    public void setConges(Set<Conge> conges) {
-        this.conges = conges;
+    public void setConge(Conge conge) {
+        this.conge = conge;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
