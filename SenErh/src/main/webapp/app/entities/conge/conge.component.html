@@ -34,7 +34,7 @@
                 <tr *ngFor="let conge of conges ;trackBy: trackId">
                     <td><a [routerLink]="['/conge', conge.id, 'view']">{{ conge.id }}</a></td>
                     <td>{{ conge.idConge }}</td>
-                    <td>{{ conge.dateDebut }}</td>
+                    <td>{{ conge.dateDebut | date:'mediumDate' }}</td>
                     <td>
                         <div *ngIf="conge.validationStep">
                             <a [routerLink]="['/validation-step', conge.validationStep?.id, 'view']" >{{ conge.validationStep?.id }}</a>

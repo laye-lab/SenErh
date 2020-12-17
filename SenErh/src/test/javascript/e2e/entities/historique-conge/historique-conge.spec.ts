@@ -43,10 +43,19 @@ describe('HistoriqueConge e2e test', () => {
 
     await historiqueCongeComponentsPage.clickOnCreateButton();
 
-    await promise.all([historiqueCongeUpdatePage.setDateDernierDepartInput('5'), historiqueCongeUpdatePage.setDateDernierRetourInput('5')]);
+    await promise.all([
+      historiqueCongeUpdatePage.setDateDernierDepartInput('2000-12-31'),
+      historiqueCongeUpdatePage.setDateDernierRetourInput('2000-12-31'),
+    ]);
 
-    expect(await historiqueCongeUpdatePage.getDateDernierDepartInput()).to.eq('5', 'Expected dateDernierDepart value to be equals to 5');
-    expect(await historiqueCongeUpdatePage.getDateDernierRetourInput()).to.eq('5', 'Expected dateDernierRetour value to be equals to 5');
+    expect(await historiqueCongeUpdatePage.getDateDernierDepartInput()).to.eq(
+      '2000-12-31',
+      'Expected dateDernierDepart value to be equals to 2000-12-31'
+    );
+    expect(await historiqueCongeUpdatePage.getDateDernierRetourInput()).to.eq(
+      '2000-12-31',
+      'Expected dateDernierRetour value to be equals to 2000-12-31'
+    );
 
     await historiqueCongeUpdatePage.save();
     expect(await historiqueCongeUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

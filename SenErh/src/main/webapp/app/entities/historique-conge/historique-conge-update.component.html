@@ -13,32 +13,32 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="senErhApp.historiqueConge.dateDernierDepart" for="field_dateDernierDepart">Date Dernier Depart</label>
-                    <input type="number" class="form-control" name="dateDernierDepart" id="field_dateDernierDepart"
-                           formControlName="dateDernierDepart"/>
+                    <div class="input-group">
+                        <input id="field_dateDernierDepart" type="text" class="form-control" name="dateDernierDepart" ngbDatepicker #dateDernierDepartDp="ngbDatepicker" formControlName="dateDernierDepart"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDernierDepartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
                     <div *ngIf="editForm.get('dateDernierDepart')!.invalid && (editForm.get('dateDernierDepart')!.dirty || editForm.get('dateDernierDepart')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('dateDernierDepart')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('dateDernierDepart')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="senErhApp.historiqueConge.dateDernierRetour" for="field_dateDernierRetour">Date Dernier Retour</label>
-                    <input type="number" class="form-control" name="dateDernierRetour" id="field_dateDernierRetour"
-                           formControlName="dateDernierRetour"/>
+                    <div class="input-group">
+                        <input id="field_dateDernierRetour" type="text" class="form-control" name="dateDernierRetour" ngbDatepicker #dateDernierRetourDp="ngbDatepicker" formControlName="dateDernierRetour"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDernierRetourDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
                     <div *ngIf="editForm.get('dateDernierRetour')!.invalid && (editForm.get('dateDernierRetour')!.dirty || editForm.get('dateDernierRetour')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('dateDernierRetour')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('dateDernierRetour')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
                         </small>
                     </div>
                 </div>

@@ -14,6 +14,8 @@ import { HistoriqueCongeService } from './historique-conge.service';
 })
 export class HistoriqueCongeUpdateComponent implements OnInit {
   isSaving = false;
+  dateDernierDepartDp: any;
+  dateDernierRetourDp: any;
 
   editForm = this.fb.group({
     id: [],

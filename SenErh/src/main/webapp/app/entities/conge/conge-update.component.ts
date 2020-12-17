@@ -23,6 +23,7 @@ export class CongeUpdateComponent implements OnInit {
   isSaving = false;
   validationsteps: IValidationStep[] = [];
   agents: IAgents[] = [];
+  dateDebutDp: any;
 
   editForm = this.fb.group({
     id: [],

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A HistoriqueConge.
@@ -25,11 +26,11 @@ public class HistoriqueConge implements Serializable {
 
     @NotNull
     @Column(name = "date_dernier_depart", nullable = false)
-    private Integer dateDernierDepart;
+    private LocalDate dateDernierDepart;
 
     @NotNull
     @Column(name = "date_dernier_retour", nullable = false)
-    private Integer dateDernierRetour;
+    private LocalDate dateDernierRetour;
 
     @OneToOne(mappedBy = "historiqueConge")
     @JsonIgnore
@@ -44,29 +45,29 @@ public class HistoriqueConge implements Serializable {
         this.id = id;
     }
 
-    public Integer getDateDernierDepart() {
+    public LocalDate getDateDernierDepart() {
         return dateDernierDepart;
     }
 
-    public HistoriqueConge dateDernierDepart(Integer dateDernierDepart) {
+    public HistoriqueConge dateDernierDepart(LocalDate dateDernierDepart) {
         this.dateDernierDepart = dateDernierDepart;
         return this;
     }
 
-    public void setDateDernierDepart(Integer dateDernierDepart) {
+    public void setDateDernierDepart(LocalDate dateDernierDepart) {
         this.dateDernierDepart = dateDernierDepart;
     }
 
-    public Integer getDateDernierRetour() {
+    public LocalDate getDateDernierRetour() {
         return dateDernierRetour;
     }
 
-    public HistoriqueConge dateDernierRetour(Integer dateDernierRetour) {
+    public HistoriqueConge dateDernierRetour(LocalDate dateDernierRetour) {
         this.dateDernierRetour = dateDernierRetour;
         return this;
     }
 
-    public void setDateDernierRetour(Integer dateDernierRetour) {
+    public void setDateDernierRetour(LocalDate dateDernierRetour) {
         this.dateDernierRetour = dateDernierRetour;
     }
 
@@ -105,8 +106,8 @@ public class HistoriqueConge implements Serializable {
     public String toString() {
         return "HistoriqueConge{" +
             "id=" + getId() +
-            ", dateDernierDepart=" + getDateDernierDepart() +
-            ", dateDernierRetour=" + getDateDernierRetour() +
+            ", dateDernierDepart='" + getDateDernierDepart() + "'" +
+            ", dateDernierRetour='" + getDateDernierRetour() + "'" +
             "}";
     }
 }

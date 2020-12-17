@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,8 +34,8 @@ public class CongeResourceIT {
     private static final Integer DEFAULT_ID_CONGE = 1;
     private static final Integer UPDATED_ID_CONGE = 2;
 
-    private static final String DEFAULT_DATE_DEBUT = "AAAAAAAAAA";
-    private static final String UPDATED_DATE_DEBUT = "BBBBBBBBBB";
+    private static final LocalDate DEFAULT_DATE_DEBUT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_DEBUT = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private CongeRepository congeRepository;
@@ -164,7 +166,7 @@ public class CongeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(conge.getId().intValue())))
             .andExpect(jsonPath("$.[*].idConge").value(hasItem(DEFAULT_ID_CONGE)))
-            .andExpect(jsonPath("$.[*].dateDebut").value(hasItem(DEFAULT_DATE_DEBUT)));
+            .andExpect(jsonPath("$.[*].dateDebut").value(hasItem(DEFAULT_DATE_DEBUT.toString())));
     }
     
     @Test
@@ -179,7 +181,7 @@ public class CongeResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(conge.getId().intValue()))
             .andExpect(jsonPath("$.idConge").value(DEFAULT_ID_CONGE))
-            .andExpect(jsonPath("$.dateDebut").value(DEFAULT_DATE_DEBUT));
+            .andExpect(jsonPath("$.dateDebut").value(DEFAULT_DATE_DEBUT.toString()));
     }
     @Test
     @Transactional

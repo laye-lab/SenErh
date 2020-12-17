@@ -29,8 +29,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="senErhApp.conge.dateDebut" for="field_dateDebut">Date Debut</label>
-                    <input type="text" class="form-control" name="dateDebut" id="field_dateDebut"
-                           formControlName="dateDebut"/>
+                    <div class="input-group">
+                        <input id="field_dateDebut" type="text" class="form-control" name="dateDebut" ngbDatepicker #dateDebutDp="ngbDatepicker" formControlName="dateDebut"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
                     <div *ngIf="editForm.get('dateDebut')!.invalid && (editForm.get('dateDebut')!.dirty || editForm.get('dateDebut')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('dateDebut')?.errors?.required" jhiTranslate="entity.validation.required">

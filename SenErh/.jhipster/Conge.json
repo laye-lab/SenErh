@@ -8,7 +8,7 @@
     },
     {
       "fieldName": "dateDebut",
-      "fieldType": "String",
+      "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
     }
   ],
