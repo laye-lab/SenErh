@@ -43,7 +43,7 @@ describe('ValidationStep e2e test', () => {
 
     await validationStepComponentsPage.clickOnCreateButton();
 
-    await promise.all([validationStepUpdatePage.setStepInput('5')]);
+    await promise.all([validationStepUpdatePage.setStepInput('5'), validationStepUpdatePage.congeSelectLastOption()]);
 
     expect(await validationStepUpdatePage.getStepInput()).to.eq('5', 'Expected step value to be equals to 5');
 

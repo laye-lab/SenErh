@@ -44,10 +44,10 @@
                 <dd>
                     <span>{{ agents.taux }}</span>
                 </dd>
-                <dt><span jhiTranslate="senErhApp.agents.historiqueConge">Historique Conge</span></dt>
+                <dt><span jhiTranslate="senErhApp.agents.conge">Conge</span></dt>
                 <dd>
-                    <div *ngIf="agents.historiqueConge">
-                        <a [routerLink]="['/historique-conge', agents.historiqueConge?.id, 'view']">{{ agents.historiqueConge?.id }}</a>
+                    <div *ngIf="agents.conge">
+                        <a [routerLink]="['/conge', agents.conge?.id, 'view']">{{ agents.conge?.id }}</a>
                     </div>
                 </dd>
             </dl>

@@ -32,9 +32,6 @@ export class CongeUpdatePage {
   idCongeInput = element(by.id('field_idConge'));
   dateDebutInput = element(by.id('field_dateDebut'));
 
-  validationStepSelect = element(by.id('field_validationStep'));
-  agentsSelect = element(by.id('field_agents'));
-
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
   }
@@ -53,38 +50,6 @@ export class CongeUpdatePage {
 
   async getDateDebutInput(): Promise<string> {
     return await this.dateDebutInput.getAttribute('value');
-  }
-
-  async validationStepSelectLastOption(): Promise<void> {
-    await this.validationStepSelect.all(by.tagName('option')).last().click();
-  }
-
-  async validationStepSelectOption(option: string): Promise<void> {
-    await this.validationStepSelect.sendKeys(option);
-  }
-
-  getValidationStepSelect(): ElementFinder {
-    return this.validationStepSelect;
-  }
-
-  async getValidationStepSelectedOption(): Promise<string> {
-    return await this.validationStepSelect.element(by.css('option:checked')).getText();
-  }
-
-  async agentsSelectLastOption(): Promise<void> {
-    await this.agentsSelect.all(by.tagName('option')).last().click();
-  }
-
-  async agentsSelectOption(option: string): Promise<void> {
-    await this.agentsSelect.sendKeys(option);
-  }
-
-  getAgentsSelect(): ElementFinder {
-    return this.agentsSelect;
-  }
-
-  async getAgentsSelectedOption(): Promise<string> {
-    return await this.agentsSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

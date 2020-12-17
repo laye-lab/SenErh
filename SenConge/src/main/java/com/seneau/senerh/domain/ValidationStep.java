@@ -1,6 +1,5 @@
 package com.seneau.senerh.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -27,8 +26,8 @@ public class ValidationStep implements Serializable {
     @Column(name = "step", nullable = false)
     private Integer step;
 
-    @OneToOne(mappedBy = "validationStep")
-    @JsonIgnore
+    @OneToOne
+    @JoinColumn(unique = true)
     private Conge conge;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
