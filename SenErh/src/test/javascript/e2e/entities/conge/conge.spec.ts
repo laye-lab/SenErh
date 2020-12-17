@@ -42,13 +42,13 @@ describe('Conge e2e test', () => {
 
     await promise.all([
       congeUpdatePage.setIdCongeInput('5'),
-      congeUpdatePage.setDateDebutInput('dateDebut'),
+      congeUpdatePage.setDateDebutInput('2000-12-31'),
       congeUpdatePage.validationStepSelectLastOption(),
       congeUpdatePage.agentsSelectLastOption(),
     ]);
 
     expect(await congeUpdatePage.getIdCongeInput()).to.eq('5', 'Expected idConge value to be equals to 5');
-    expect(await congeUpdatePage.getDateDebutInput()).to.eq('dateDebut', 'Expected DateDebut value to be equals to dateDebut');
+    expect(await congeUpdatePage.getDateDebutInput()).to.eq('2000-12-31', 'Expected dateDebut value to be equals to 2000-12-31');
 
     await congeUpdatePage.save();
     expect(await congeUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

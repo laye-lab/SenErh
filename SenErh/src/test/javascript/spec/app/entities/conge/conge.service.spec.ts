@@ -1,5 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import * as moment from 'moment';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { CongeService } from 'app/entities/conge/conge.service';
 import { IConge, Conge } from 'app/shared/model/conge.model';
 
@@ -10,6 +12,7 @@ describe('Service Tests', () => {
     let httpMock: HttpTestingController;
     let elemDefault: IConge;
     let expectedResult: IConge | IConge[] | boolean | null;
+    let currentDate: moment.Moment;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -19,13 +22,19 @@ describe('Service Tests', () => {
       injector = getTestBed();
       service = injector.get(CongeService);
       httpMock = injector.get(HttpTestingController);
+      currentDate = moment();
 
-      elemDefault = new Conge(0, 0, 'AAAAAAA');
+      elemDefault = new Conge(0, 0, currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            dateDebut: currentDate.format(DATE_FORMAT),
+          },
+          elemDefault
+        );
 
         service.find(123).subscribe(resp => (expectedResult = resp.body));
 
@@ -38,11 +47,17 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
+            dateDebut: currentDate.format(DATE_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dateDebut: currentDate,
+          },
+          returnedFromService
+        );
 
         service.create(new Conge()).subscribe(resp => (expectedResult = resp.body));
 
@@ -55,12 +70,17 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             idConge: 1,
-            dateDebut: 'BBBBBB',
+            dateDebut: currentDate.format(DATE_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dateDebut: currentDate,
+          },
+          returnedFromService
+        );
 
         service.update(expected).subscribe(resp => (expectedResult = resp.body));
 
@@ -73,12 +93,17 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             idConge: 1,
-            dateDebut: 'BBBBBB',
+            dateDebut: currentDate.format(DATE_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dateDebut: currentDate,
+          },
+          returnedFromService
+        );
 
         service.query().subscribe(resp => (expectedResult = resp.body));
 

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A Conge.
@@ -29,7 +30,7 @@ public class Conge implements Serializable {
 
     @NotNull
     @Column(name = "date_debut", nullable = false)
-    private String dateDebut;
+    private LocalDate dateDebut;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -61,16 +62,16 @@ public class Conge implements Serializable {
         this.idConge = idConge;
     }
 
-    public String getDateDebut() {
+    public LocalDate getDateDebut() {
         return dateDebut;
     }
 
-    public Conge dateDebut(String dateDebut) {
+    public Conge dateDebut(LocalDate dateDebut) {
         this.dateDebut = dateDebut;
         return this;
     }
 
-    public void setDateDebut(String dateDebut) {
+    public void setDateDebut(LocalDate dateDebut) {
         this.dateDebut = dateDebut;
     }
 

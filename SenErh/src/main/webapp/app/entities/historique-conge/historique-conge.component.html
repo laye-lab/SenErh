@@ -31,8 +31,8 @@
             <tbody>
                 <tr *ngFor="let historiqueConge of historiqueConges ;trackBy: trackId">
                     <td><a [routerLink]="['/historique-conge', historiqueConge.id, 'view']">{{ historiqueConge.id }}</a></td>
-                    <td>{{ historiqueConge.dateDernierDepart }}</td>
-                    <td>{{ historiqueConge.dateDernierRetour }}</td>
+                    <td>{{ historiqueConge.dateDernierDepart | date:'mediumDate' }}</td>
+                    <td>{{ historiqueConge.dateDernierRetour | date:'mediumDate' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

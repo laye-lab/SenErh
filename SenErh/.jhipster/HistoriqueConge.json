@@ -3,12 +3,12 @@
   "fields": [
     {
       "fieldName": "dateDernierDepart",
-      "fieldType": "Integer",
+      "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "dateDernierRetour",
-      "fieldType": "Integer",
+      "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
     }
   ],

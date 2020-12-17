@@ -56,7 +56,7 @@ entity Agents {
 
 entity Conge {
 	IdConge Integer required 
-    DateDebut String required 
+    DateDebut LocalDate required 
 }
 
 entity ValidationStep {
@@ -66,8 +66,8 @@ entity ValidationStep {
 
 entity HistoriqueConge {
 	id Integer required 
-     DateDernierDepart Integer required 
-     DateDernierRetour Integer required 
+     DateDernierDepart LocalDate required 
+     DateDernierRetour LocalDate required 
 }
 
 

@@ -14,6 +14,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,11 +31,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class HistoriqueCongeResourceIT {
 
-    private static final Integer DEFAULT_DATE_DERNIER_DEPART = 1;
-    private static final Integer UPDATED_DATE_DERNIER_DEPART = 2;
+    private static final LocalDate DEFAULT_DATE_DERNIER_DEPART = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_DERNIER_DEPART = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Integer DEFAULT_DATE_DERNIER_RETOUR = 1;
-    private static final Integer UPDATED_DATE_DERNIER_RETOUR = 2;
+    private static final LocalDate DEFAULT_DATE_DERNIER_RETOUR = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_DERNIER_RETOUR = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private HistoriqueCongeRepository historiqueCongeRepository;
@@ -163,8 +165,8 @@ public class HistoriqueCongeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(historiqueConge.getId().intValue())))
-            .andExpect(jsonPath("$.[*].dateDernierDepart").value(hasItem(DEFAULT_DATE_DERNIER_DEPART)))
-            .andExpect(jsonPath("$.[*].dateDernierRetour").value(hasItem(DEFAULT_DATE_DERNIER_RETOUR)));
+            .andExpect(jsonPath("$.[*].dateDernierDepart").value(hasItem(DEFAULT_DATE_DERNIER_DEPART.toString())))
+            .andExpect(jsonPath("$.[*].dateDernierRetour").value(hasItem(DEFAULT_DATE_DERNIER_RETOUR.toString())));
     }
     
     @Test
@@ -178,8 +180,8 @@ public class HistoriqueCongeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(historiqueConge.getId().intValue()))
-            .andExpect(jsonPath("$.dateDernierDepart").value(DEFAULT_DATE_DERNIER_DEPART))
-            .andExpect(jsonPath("$.dateDernierRetour").value(DEFAULT_DATE_DERNIER_RETOUR));
+            .andExpect(jsonPath("$.dateDernierDepart").value(DEFAULT_DATE_DERNIER_DEPART.toString()))
+            .andExpect(jsonPath("$.dateDernierRetour").value(DEFAULT_DATE_DERNIER_RETOUR.toString()));
     }
     @Test
     @Transactional

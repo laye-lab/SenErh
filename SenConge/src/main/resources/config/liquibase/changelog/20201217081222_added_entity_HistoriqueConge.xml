@@ -16,10 +16,10 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date_dernier_depart" type="integer">
+            <column name="date_dernier_depart" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="date_dernier_retour" type="integer">
+            <column name="date_dernier_retour" type="date">
                 <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -45,8 +45,8 @@
                   separator=";"
                   tableName="historique_conge">
             <column name="id" type="numeric"/>
-            <column name="date_dernier_depart" type="numeric"/>
-            <column name="date_dernier_retour" type="numeric"/>
+            <column name="date_dernier_depart" type="date"/>
+            <column name="date_dernier_retour" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
