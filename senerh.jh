@@ -1,20 +1,4 @@
 
-application {
-  config {
-     baseName SenErh,
-    applicationType gateway,
-    packageName com.seneau.senerh,
-    serviceDiscoveryType eureka,
-    authenticationType jwt,
-    prodDatabaseType mysql,
-    cacheProvider hazelcast,
-    buildTool gradle,
-    clientFramework angular,
-    useSass true,
-    testFrameworks [protractor]
-  }
-  entities *
-}
 
 application {
   config {
@@ -31,51 +15,47 @@ application {
   
   
   entities 
-  Agents,
+  CongeData,
   Conge ,
-  ValidationStep,
-  HistoriqueConge
+  Tracker,
+  Recuperation
 }
 
 
-enum Statut {
-    AMA, CAD , EXE 
-}
-
-entity Agents {
-	id Integer required
-	Nom String required
- 	Equipe Integer required
-    Direction  String required
-    Etablissement String required
-    Fonction  String required 
-    Statut Statut required
-    Affectation String required
-    Taux Integer 
-}
 
 entity Conge {
+	Id Integer required 
 	IdConge Integer required 
     DateDebut LocalDate required 
+    DateRetourEffective LocalDate required 
 }
 
-entity ValidationStep {
-	id Integer required 
+entity CongeData {
+	Id Integer required 
+	IdConge Integer required 
+    NbrJour LocalDate required 
+    DateRetour LocalDate required 
+}
+
+entity Tracker {
+	Id Integer required 
+    IdConge Integer required 
     Step Integer required 
 }
 
-entity HistoriqueConge {
-	id Integer required 
-     DateDernierDepart LocalDate required 
-     DateDernierRetour LocalDate required 
+entity Recuperation {
+	 Id Integer required 
+     IdConge Integer required 
+     NbrJour Integer required 
 }
 
 relationship OneToMany {
-Agents to Conge
+   Conge to CongeData
 }
 relationship OneToOne {
-   ValidationStep to Conge 
-    Agents  to  HistoriqueConge
+    Conge to Tracker
+    Conge to Recuperation
+    
 }
 
 

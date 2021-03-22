@@ -1,0 +1,35 @@
+{
+  "name": "Tracker",
+  "fields": [
+    {
+      "fieldName": "idConge",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "step",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "conge",
+      "otherEntityRelationshipName": "tracker",
+      "relationshipName": "conge",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210322094116",
+  "entityTableName": "tracker",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["SenConge"]
+}
