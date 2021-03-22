@@ -1,0 +1,40 @@
+{
+  "name": "CongeData",
+  "fields": [
+    {
+      "fieldName": "idConge",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nbrJour",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateRetour",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "conge",
+      "otherEntityRelationshipName": "congeData",
+      "relationshipName": "conge",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210322094016",
+  "entityTableName": "conge_data",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["SenConge"]
+}
