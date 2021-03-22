@@ -44,7 +44,7 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./build/h2db/db/senconge;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:file:./target/h2db/db/senconge;DB_CLOSE_DELAY=-1
     username: SenConge
     password:
     hikari:
