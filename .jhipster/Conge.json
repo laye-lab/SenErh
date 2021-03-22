@@ -50,6 +50,7 @@
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["SenConge"]
+  "clientRootFolder": "SenConge",
+  "applications": ["SenConge"],
+  "microserviceName": "SenConge"
 }

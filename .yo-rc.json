@@ -6,7 +6,7 @@
     "serviceDiscoveryType": "eureka",
     "skipUserManagement": true,
     "baseName": "SenConge",
-    "buildTool": "gradle",
+    "buildTool": "maven",
     "databaseType": "sql",
     "devDatabaseType": "h2Disk",
     "enableHibernateCache": true,
