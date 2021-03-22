@@ -8,7 +8,7 @@ application {
     serviceDiscoveryType eureka,
     authenticationType jwt,
     prodDatabaseType mysql,
-    buildTool gradle,
+    buildTool maven,
     serverPort 9081,
     skipUserManagement true
   }
